@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SystemKolekcjonerstwo.MainPage">
+
+    <VerticalStackLayout>
+        <HorizontalStackLayout WidthRequest="100">
+            <Button Text="Dodaj kolekcję" Clicked="addCollection_Clicked" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Button Text="Usuń kolekcję" HorizontalOptions="Center" VerticalOptions="Center"/>
+        </HorizontalStackLayout>
+        <ScrollView x:Name="collectionsView">
+            
+        </ScrollView>
+    </VerticalStackLayout>
+
+</ContentPage>
