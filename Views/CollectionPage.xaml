@@ -2,21 +2,68 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SystemKolekcjonerstwo.Views.CollectionPage"
-             Title="CollectionPage">
-    <VerticalStackLayout>
-        <HorizontalStackLayout WidthRequest="100">
-            <Button Text="Dodaj element" Clicked="AddElement_Clicked" HorizontalOptions="Center" VerticalOptions="Center"/>
-            <Button Text="Usuń element" Clicked="RemoveElement_Clicked" HorizontalOptions="Center" VerticalOptions="Center"/>
-            <Button Text="Edytuj element" Clicked="EditElement_Clicked" HorizontalOptions="Center" VerticalOptions="Center"/>
-        </HorizontalStackLayout>
-        <CollectionView x:Name="elementsView" SelectionMode="Single">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <VerticalStackLayout>
-                        <Label Text="{Binding Name}"></Label>
-                    </VerticalStackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </VerticalStackLayout>
+             Title="Moja Kolekcja"
+             xmlns:models="clr-namespace:SystemKolekcjonerstwo.Models">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <models:ValueDisplayConverter x:Key="ValueDisplayConverter"/>
+            <models:StatusToColorConverter x:Key="StatusToColorConverter"/>
+
+            <Style x:Key="ButtonStyle" TargetType="Button">
+                <Setter Property="Margin" Value="5"/>
+                <Setter Property="BackgroundColor" Value="#2196F3"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="CornerRadius" Value="10"/>
+            </Style>
+
+            <Style x:Key="LabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="LineBreakMode" Value="CharacterWrap"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20">
+            <Label Text="{Binding Name}" HorizontalOptions="Center" FontSize="30" TextColor="AntiqueWhite"/>
+
+            <HorizontalStackLayout Spacing="10">
+                <Button Text="Dodaj element" Clicked="AddElement_Clicked" Style="{StaticResource ButtonStyle}"/>
+                <Button Text="Usuń element" Clicked="RemoveElement_Clicked" Style="{StaticResource ButtonStyle}"/>
+                <Button Text="Edytuj element" Clicked="EditElement_Clicked" Style="{StaticResource ButtonStyle}"/>
+                <Button Text="Dodaj swoją kolumnę z danymi" Clicked="AddProperty_Clicked" Style="{StaticResource ButtonStyle}"/>
+                <Button Text="Importuj kolekcję" Clicked="ImportCollection_Clicked" Style="{StaticResource ButtonStyle}"/>
+                <Button Text="Eksportuj kolekcję" Clicked="ExportCollection_Clicked" Style="{StaticResource ButtonStyle}"/>
+                <Button Text="Wyświetl podsumowanie kolekcji" Clicked="GenerateCollectionSummary_Clicked" Style="{StaticResource ButtonStyle}"/>
+            </HorizontalStackLayout>
+
+            <CollectionView x:Name="elementsView" SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout BackgroundColor="{Binding Status, Converter={StaticResource StatusToColorConverter}}">
+                            <Image Source="{Binding ImagePath}" HeightRequest="100" WidthRequest="100" Aspect="AspectFit"/>
+                            <Label Text="{Binding Name}" Style="{StaticResource LabelStyle}"/>
+                            <Label Text="{Binding Price, StringFormat='{0:F2}zł'}" Style="{StaticResource LabelStyle}"/>
+                            <Label Text="{Binding Status}" Style="{StaticResource LabelStyle}"/>
+                            <Label Text="{Binding Rating, StringFormat='Ocena: {0}/10'}" Style="{StaticResource LabelStyle}"/>
+                            <Label Text="{Binding Comment}" Style="{StaticResource LabelStyle}"/>
+
+                            <CollectionView ItemsSource="{Binding AdditionalProperties}" HorizontalOptions="Center">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <VerticalStackLayout>
+                                            <Label Text="{Binding Value, Converter={StaticResource ValueDisplayConverter}}" Style="{StaticResource LabelStyle}"/>
+                                        </VerticalStackLayout>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

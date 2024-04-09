@@ -1,0 +1,153 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Visual Studio Projects\\SystemZarzadzania\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{25F128D1-99AA-4005-85F8-B7236D53DE38}|SystemKolekcjonerstwo.csproj|d:\\visual studio projects\\systemzarzadzania\\views\\collectionpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25F128D1-99AA-4005-85F8-B7236D53DE38}|SystemKolekcjonerstwo.csproj|solutionrelative:views\\collectionpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25F128D1-99AA-4005-85F8-B7236D53DE38}|SystemKolekcjonerstwo.csproj|D:\\Visual Studio Projects\\SystemZarzadzania\\views\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25F128D1-99AA-4005-85F8-B7236D53DE38}|SystemKolekcjonerstwo.csproj|solutionrelative:views\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25F128D1-99AA-4005-85F8-B7236D53DE38}|SystemKolekcjonerstwo.csproj|D:\\Visual Studio Projects\\SystemZarzadzania\\views\\collectionpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{25F128D1-99AA-4005-85F8-B7236D53DE38}|SystemKolekcjonerstwo.csproj|solutionrelative:views\\collectionpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25F128D1-99AA-4005-85F8-B7236D53DE38}|SystemKolekcjonerstwo.csproj|D:\\Visual Studio Projects\\SystemZarzadzania\\views\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{25F128D1-99AA-4005-85F8-B7236D53DE38}|SystemKolekcjonerstwo.csproj|solutionrelative:views\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25F128D1-99AA-4005-85F8-B7236D53DE38}|SystemKolekcjonerstwo.csproj|D:\\Visual Studio Projects\\SystemZarzadzania\\resources\\styles\\styles.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{25F128D1-99AA-4005-85F8-B7236D53DE38}|SystemKolekcjonerstwo.csproj|solutionrelative:resources\\styles\\styles.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25F128D1-99AA-4005-85F8-B7236D53DE38}|SystemKolekcjonerstwo.csproj|D:\\Visual Studio Projects\\SystemZarzadzania\\models\\valuedisplayconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25F128D1-99AA-4005-85F8-B7236D53DE38}|SystemKolekcjonerstwo.csproj|solutionrelative:models\\valuedisplayconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25F128D1-99AA-4005-85F8-B7236D53DE38}|SystemKolekcjonerstwo.csproj|D:\\Visual Studio Projects\\SystemZarzadzania\\models\\statustocolorconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25F128D1-99AA-4005-85F8-B7236D53DE38}|SystemKolekcjonerstwo.csproj|solutionrelative:models\\statustocolorconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25F128D1-99AA-4005-85F8-B7236D53DE38}|SystemKolekcjonerstwo.csproj|D:\\Visual Studio Projects\\SystemZarzadzania\\models\\element.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25F128D1-99AA-4005-85F8-B7236D53DE38}|SystemKolekcjonerstwo.csproj|solutionrelative:models\\element.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Styles.xaml",
+              "DocumentMoniker": "D:\\Visual Studio Projects\\SystemZarzadzania\\Resources\\Styles\\Styles.xaml",
+              "RelativeDocumentMoniker": "Resources\\Styles\\Styles.xaml",
+              "ToolTip": "D:\\Visual Studio Projects\\SystemZarzadzania\\Resources\\Styles\\Styles.xaml",
+              "RelativeToolTip": "Resources\\Styles\\Styles.xaml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-04-09T19:37:26.279Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainPage.xaml.cs",
+              "DocumentMoniker": "D:\\Visual Studio Projects\\SystemZarzadzania\\Views\\MainPage.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\MainPage.xaml.cs",
+              "ToolTip": "D:\\Visual Studio Projects\\SystemZarzadzania\\Views\\MainPage.xaml.cs",
+              "RelativeToolTip": "Views\\MainPage.xaml.cs",
+              "ViewState": "AQIAAEIAAAAAAAAAAAAAAEQAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-09T18:26:26.137Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainPage.xaml",
+              "DocumentMoniker": "D:\\Visual Studio Projects\\SystemZarzadzania\\Views\\MainPage.xaml",
+              "RelativeDocumentMoniker": "Views\\MainPage.xaml",
+              "ToolTip": "D:\\Visual Studio Projects\\SystemZarzadzania\\Views\\MainPage.xaml",
+              "RelativeToolTip": "Views\\MainPage.xaml",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAcwCcAAABiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-04-09T19:10:07.73Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "StatusToColorConverter.cs",
+              "DocumentMoniker": "D:\\Visual Studio Projects\\SystemZarzadzania\\Models\\StatusToColorConverter.cs",
+              "RelativeDocumentMoniker": "Models\\StatusToColorConverter.cs",
+              "ToolTip": "D:\\Visual Studio Projects\\SystemZarzadzania\\Models\\StatusToColorConverter.cs",
+              "RelativeToolTip": "Models\\StatusToColorConverter.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-09T17:49:34.953Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ValueDisplayConverter.cs",
+              "DocumentMoniker": "D:\\Visual Studio Projects\\SystemZarzadzania\\Models\\ValueDisplayConverter.cs",
+              "RelativeDocumentMoniker": "Models\\ValueDisplayConverter.cs",
+              "ToolTip": "D:\\Visual Studio Projects\\SystemZarzadzania\\Models\\ValueDisplayConverter.cs",
+              "RelativeToolTip": "Models\\ValueDisplayConverter.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAABjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-09T17:31:58.684Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Element.cs",
+              "DocumentMoniker": "D:\\Visual Studio Projects\\SystemZarzadzania\\Models\\Element.cs",
+              "RelativeDocumentMoniker": "Models\\Element.cs",
+              "ToolTip": "D:\\Visual Studio Projects\\SystemZarzadzania\\Models\\Element.cs",
+              "RelativeToolTip": "Models\\Element.cs",
+              "ViewState": "AQIAAGYAAAAAAAAAAAAYwHQAAAA/AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-08T13:49:48.839Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CollectionPage.xaml",
+              "DocumentMoniker": "D:\\Visual Studio Projects\\SystemZarzadzania\\Views\\CollectionPage.xaml",
+              "RelativeDocumentMoniker": "Views\\CollectionPage.xaml",
+              "ToolTip": "D:\\Visual Studio Projects\\SystemZarzadzania\\Views\\CollectionPage.xaml",
+              "RelativeToolTip": "Views\\CollectionPage.xaml",
+              "ViewState": "AQIAABgAAAAAAAAAAAAAAC4AAABoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-04-03T21:02:56.158Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CollectionPage.xaml.cs",
+              "DocumentMoniker": "D:\\Visual Studio Projects\\SystemZarzadzania\\Views\\CollectionPage.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\CollectionPage.xaml.cs",
+              "ToolTip": "D:\\Visual Studio Projects\\SystemZarzadzania\\Views\\CollectionPage.xaml.cs",
+              "RelativeToolTip": "Views\\CollectionPage.xaml.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAowB4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-03T20:55:56.807Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

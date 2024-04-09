@@ -3,14 +3,41 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SystemKolekcjonerstwo.MainPage">
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#3498DB" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="Padding" Value="10,5" />
+                <Setter Property="CornerRadius" Value="5" />
+            </Style>
+
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="Margin" Value="5,0,0,0" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <VerticalStackLayout>
         <HorizontalStackLayout WidthRequest="100">
-            <Button Text="Dodaj kolekcję" Clicked="addCollection_Clicked" VerticalOptions="Center" HorizontalOptions="Center"/>
-            <Button Text="Usuń kolekcję" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Button Text="Dodaj kolekcję" Clicked="AddCollection_Clicked" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Button Text="Usuń kolekcję" Clicked="RemoveCollection_Clicked" HorizontalOptions="Center" VerticalOptions="Center"/>
         </HorizontalStackLayout>
-        <ScrollView x:Name="collectionsView">
-            
-        </ScrollView>
+
+        <CollectionView x:Name="collectionPagesView" SelectionMode="Single">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <VerticalStackLayout>
+                        <Label Text="{Binding Name}"></Label>
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button Text="Przejdź do wybranej kolekcji" Clicked="GoToCollection_Clicked" HorizontalOptions="Center" VerticalOptions="End"/>
     </VerticalStackLayout>
 
 </ContentPage>
