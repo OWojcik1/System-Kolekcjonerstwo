@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Text;
 
 namespace SystemKolekcjonerstwo.Views;
@@ -35,23 +36,22 @@ public partial class CollectionPage : ContentPage
         StringBuilder sb = new();
         foreach (var element in Elements)
         {
-            sb.Append($"{element.Name},{element.Price},{element.Status},{element.Rating},{element.Comment}, {element.ImagePath}");
+            sb.Append($"{element.Name};{element.Price};{element.Status};{element.Rating};{element.Comment};{element.ImagePath}");
             foreach (var property in element.AdditionalProperties)
             {
                 if (property.Value is Tuple<List<string>, string> tupleProperty)
                 {
-                    sb.Append($",{property.Key}:{string.Join(";", tupleProperty.Item1)}:{tupleProperty.Item2}");
+                    sb.Append($";{property.Key}:{string.Join(";", tupleProperty.Item1)}:{tupleProperty.Item2}");
                 }
                 else
                 {
-                    sb.Append($",{property.Key}:{property.Value}");
+                    sb.Append($";{property.Key}:{property.Value}");
                 }
             }
             sb.AppendLine();
         }
         File.WriteAllText(filePath, sb.ToString());
     }
-
 
     public void LoadCollection()
     {
@@ -62,18 +62,19 @@ public partial class CollectionPage : ContentPage
             string[] lines = File.ReadAllLines(filePath);
             foreach (var line in lines)
             {
-                string[] values = line.Split(',');
+                string[] values = line.Split(';');
                 if (values.Length >= 6)
                 {
                     Models.Element newElement = new()
                     {
                         Name = values[0],
-                        Price = Convert.ToDouble(values[1]),
+                        Price = Convert.ToInt32(values[1]),
                         Status = values[2],
                         Rating = Convert.ToInt32(values[3]),
                         Comment = values[4],
                         ImagePath = values[5]
                     };
+
                     for (int i = 6; i < values.Length; i++)
                     {
                         string[] propertyPair = values[i].Split(':');
@@ -108,6 +109,7 @@ public partial class CollectionPage : ContentPage
 
 
 
+
     private async void AddElement_Clicked(object sender, EventArgs e)
     {
         string name = await DisplayPromptAsync("Tworzenie elementu", "Podaj nazwê elementu", "OK", "Anuluj");
@@ -123,7 +125,7 @@ public partial class CollectionPage : ContentPage
 
         FileResult file = await MediaPicker.Default.PickPhotoAsync();
 
-        double price = await GetPriceAsync(0);
+        int price = await GetPriceAsync(0);
         string status = await GetStatusAsync("");
         int rating = await GetRatingAsync(1);
         string comment = await GetCommentAsync("");
@@ -146,32 +148,33 @@ public partial class CollectionPage : ContentPage
 
     private async void EditElement_Clicked(object sender, EventArgs e)
     {
-        if (elementsView.SelectedItem is not Models.Element selectedItem || !Elements.Contains(selectedItem))
+        if (!(elementsView.SelectedItem is Models.Element selectedItem) || !Elements.Contains(selectedItem))
             return;
 
         string newName = await DisplayPromptAsync("Edytowanie elementu", "Podaj now¹ nazwê elementu", "OK", "Anuluj", null, -1, null, selectedItem.Name);
         if (string.IsNullOrEmpty(newName))
             return;
 
-        double newPrice = await GetPriceAsync(selectedItem.Price);
+        int newPrice = await GetPriceAsync(selectedItem.Price);
         string newStatus = await GetStatusAsync(selectedItem.Status);
         int newRating = await GetRatingAsync(selectedItem.Rating);
         string newComment = await GetCommentAsync(selectedItem.Comment);
 
         FileResult file = await MediaPicker.Default.PickPhotoAsync();
 
-
         Dictionary<string, object> editedProperties = new(selectedItem.AdditionalProperties);
+
         foreach (var property in selectedItem.AdditionalProperties)
         {
-            if (property.Value is string || property.Value is double)
+            if (property.Value is string || property.Value is int)
             {
                 string newValue = await DisplayPromptAsync("Edycja w³aœciwoœci", $"Aktualna wartoœæ dla w³aœciwoœci '{property.Key}': {property.Value}", "OK", "Anuluj", null, -1, null, property.Value.ToString());
                 if (newValue != null)
-                    editedProperties[property.Key] = property.Value is double ? double.Parse(newValue) : newValue;
+                    editedProperties[property.Key] = property.Value is int ? int.Parse(newValue) : newValue;
             }
             else if (property.Value is Tuple<List<string>, string> tuple)
             {
+                List<string> tempList = new List<string>(tuple.Item1);
 
                 while (true)
                 {
@@ -180,21 +183,21 @@ public partial class CollectionPage : ContentPage
                     if (newListValue == null)
                         break;
 
-                    if (!tuple.Item1.Contains(newListValue))
-                        tuple.Item1.Add(newListValue);
+                    if (!tempList.Contains(newListValue))
+                        tempList.Add(newListValue);
                 }
-                string newValue = await DisplayActionSheet("Wybierz wartoœæ", null, null, tuple.Item1.ToArray());
 
-                if(newValue == tuple.Item2)
+                string newValue = await DisplayActionSheet("Wybierz wartoœæ", null, null, tempList.ToArray());
+
+                if (newValue == tuple.Item2)
                 {
                     editedProperties[property.Key] = tuple;
-                    return;
                 }
-
-                List<string> tempList = tuple.Item1;
-
-                Tuple<List<string>, string> newTuple = new(tempList, newValue);
-                editedProperties[property.Key] = newTuple;
+                else
+                {
+                    Tuple<List<string>, string> newTuple = new Tuple<List<string>, string>(tempList, newValue);
+                    editedProperties[property.Key] = newTuple;
+                }
             }
         }
 
@@ -205,7 +208,7 @@ public partial class CollectionPage : ContentPage
             Status = newStatus,
             Rating = newRating,
             Comment = newComment,
-            ImagePath = (file!= null) ? file.FullPath : string.Empty,
+            ImagePath = (file != null) ? file.FullPath : selectedItem.ImagePath,
             AdditionalProperties = editedProperties
         };
 
@@ -221,6 +224,7 @@ public partial class CollectionPage : ContentPage
 
         SaveCollection();
     }
+
 
 
     private async void AddProperty_Clicked(object sender, EventArgs e)
@@ -254,9 +258,9 @@ public partial class CollectionPage : ContentPage
         {
             string propertyValueString = await DisplayPromptAsync("Nowa w³aœciwoœæ", $"Podaj wartoœæ liczbow¹ dla w³aœciwoœci '{propertyName}'", "OK", "Anuluj");
 
-            double numericValue;
+            int numericValue;
 
-            if (double.TryParse(propertyValueString, out numericValue))
+            if (int.TryParse(propertyValueString, out numericValue))
             {
                 propertyValue = numericValue;
             }
@@ -268,7 +272,7 @@ public partial class CollectionPage : ContentPage
         }
         else if (propertyType == "Zestaw wartoœci do wyboru")
         {
-            List<string> predefinedValues = new List<string>();
+            List<string> predefinedValues = new();
 
             while (true)
             {
@@ -311,10 +315,12 @@ public partial class CollectionPage : ContentPage
     }
 
 
-    private async Task<double> GetPriceAsync(double currentPrice)
+
+    private async Task<int> GetPriceAsync(int currentPrice)
     {
         string priceString = await DisplayPromptAsync("Tworzenie elementu", "Podaj cenê elementu", "OK", "Anuluj", null, -1, null, currentPrice.ToString());
-        return double.TryParse(priceString, out double price) ? price : 0;
+
+        return int.TryParse(priceString, out int price) ? price : 0;
     }
 
     private async Task<string> GetStatusAsync(string currentStatus)
@@ -341,9 +347,9 @@ public partial class CollectionPage : ContentPage
         {
             PickerTitle = "Wybierz plik do importu",
             FileTypes = new FilePickerFileType(new Dictionary<DevicePlatform, IEnumerable<string>>
-            {
-                { DevicePlatform.WinUI, new[] { ".txt" } }
-            })
+        {
+            { DevicePlatform.WinUI, new[] { ".txt" } }
+        })
         });
 
         if (file != null)
@@ -353,13 +359,13 @@ public partial class CollectionPage : ContentPage
 
             foreach (string line in lines)
             {
-                string[] values = line.Split(',');
+                string[] values = line.Split(';');
                 if (values.Length >= 6)
                 {
                     Models.Element newElement = new()
                     {
                         Name = values[0],
-                        Price = Convert.ToDouble(values[1]),
+                        Price = Convert.ToInt32(values[1]),
                         Status = values[2],
                         Rating = Convert.ToInt32(values[3]),
                         Comment = values[4],
@@ -413,12 +419,13 @@ public partial class CollectionPage : ContentPage
         }
 
     }
+
     private async Task ExportCollection()
     {
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new();
         foreach (var element in Elements)
         {
-            sb.AppendLine($"{element.Name},{element.Price},{element.Status},{element.Rating},{element.Comment},{element.ImagePath}");
+            sb.AppendLine($"{element.Name};{element.Price};{element.Status};{element.Rating};{element.Comment};{element.ImagePath}");
             foreach (var property in element.AdditionalProperties)
             {
                 if (property.Value is Tuple<List<string>, string> tupleProperty)
@@ -447,6 +454,7 @@ public partial class CollectionPage : ContentPage
             File.WriteAllText(file.FullPath, sb.ToString());
         }
     }
+
 
     private async void GenerateCollectionSummary_Clicked(object sender, EventArgs e)
     {

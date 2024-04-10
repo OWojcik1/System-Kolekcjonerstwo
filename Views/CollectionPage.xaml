@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SystemKolekcjonerstwo.Views.CollectionPage"
              Title="Moja Kolekcja"
-             xmlns:models="clr-namespace:SystemKolekcjonerstwo.Models">
+             xmlns:models="clr-namespace:SystemKolekcjonerstwo.Models"
+             BackgroundColor="DeepSkyBlue">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -46,7 +47,7 @@
                         <VerticalStackLayout BackgroundColor="{Binding Status, Converter={StaticResource StatusToColorConverter}}">
                             <Image Source="{Binding ImagePath}" HeightRequest="100" WidthRequest="100" Aspect="AspectFit"/>
                             <Label Text="{Binding Name}" Style="{StaticResource LabelStyle}"/>
-                            <Label Text="{Binding Price, StringFormat='{0:F2}zł'}" Style="{StaticResource LabelStyle}"/>
+                            <Label Text="{Binding Price, StringFormat='{0}zł'}" Style="{StaticResource LabelStyle}"/>
                             <Label Text="{Binding Status}" Style="{StaticResource LabelStyle}"/>
                             <Label Text="{Binding Rating, StringFormat='Ocena: {0}/10'}" Style="{StaticResource LabelStyle}"/>
                             <Label Text="{Binding Comment}" Style="{StaticResource LabelStyle}"/>

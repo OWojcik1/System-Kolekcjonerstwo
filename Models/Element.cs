@@ -5,7 +5,7 @@ namespace SystemKolekcjonerstwo.Models
     public class Element : INotifyPropertyChanged
     {
         private string name;
-        private double price;
+        private int price;
         private string status;
         private int rating;
         private string comment;
@@ -25,7 +25,7 @@ namespace SystemKolekcjonerstwo.Models
             }
         }
 
-        public double Price
+        public int Price
         {
             get => price;
             set

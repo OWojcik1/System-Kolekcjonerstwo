@@ -77,9 +77,13 @@ namespace SystemKolekcjonerstwo
                 CollectionPage selectedCollection = collectionPagesView.SelectedItem as CollectionPage;
                 await Navigation.PushAsync(new CollectionPage(selectedCollection.Name));
             }
+            else
+            {
+                await DisplayAlert("Błąd", "Wybierz Kolekcję", "Anuluj");
+            }
         }
 
-        private void RemoveCollection_Clicked(object sender, EventArgs e)
+        private async void RemoveCollection_Clicked(object sender, EventArgs e)
         {
             if (collectionPagesView.SelectedItem != null)
             {
@@ -95,6 +99,10 @@ namespace SystemKolekcjonerstwo
                     Directory.Delete(collectionFolder, true);
                     CollectionPages.Remove(selectedCollection);
                 }
+            }
+            else
+            {
+                await DisplayAlert("Błąd", "Wybierz kolekcję do usunięcia", "Anuluj");
             }
         }
     }

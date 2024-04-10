@@ -1,5 +1,4 @@
 ﻿using System.Globalization;
-using Microsoft.Maui.Controls;
 
 namespace SystemKolekcjonerstwo.Models
 {
@@ -11,7 +10,7 @@ namespace SystemKolekcjonerstwo.Models
             {
                 return status.ToLower() switch
                 {
-                    "sprzedany" => Colors.Gray,
+                    "sprzedany" => Colors.DimGray,
                     _ => Colors.Transparent,
                 };
             }
