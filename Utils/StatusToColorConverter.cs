@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace SystemKolekcjonerstwo.Models
+namespace SystemKolekcjonerstwo.Utils
 {
     public class StatusToColorConverter : IValueConverter
     {

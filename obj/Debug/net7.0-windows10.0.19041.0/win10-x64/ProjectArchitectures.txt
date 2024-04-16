@@ -1,1 +1,1 @@
-C:\Users\Student\Documents\4g\Kolekcjonerstwo\SystemKolekcjonerstwo.csproj;x64
+D:\Visual Studio Projects\Zarzadzanie\SystemKolekcjonerstwo.csproj;x64

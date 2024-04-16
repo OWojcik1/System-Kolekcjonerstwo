@@ -5,12 +5,11 @@ namespace SystemKolekcjonerstwo.Models
     public class Element : INotifyPropertyChanged
     {
         private string name;
-        private int price;
+        private double price;
         private string status;
         private int rating;
         private string comment;
         private string imagePath;
-        private Dictionary<string, object> additionalProperties = new();
 
         public string Name
         {
@@ -25,7 +24,7 @@ namespace SystemKolekcjonerstwo.Models
             }
         }
 
-        public int Price
+        public double Price
         {
             get => price;
             set
@@ -90,19 +89,6 @@ namespace SystemKolekcjonerstwo.Models
             }
         }
 
-        public Dictionary<string, object> AdditionalProperties
-        {
-            get => additionalProperties;
-            set
-            {
-                if (additionalProperties != value)
-                {
-                    additionalProperties = value;
-                    OnPropertyChanged(nameof(AdditionalProperties));
-                }
-            }
-        }
-
 
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -114,22 +100,8 @@ namespace SystemKolekcjonerstwo.Models
 
         public void SetProperty(string propertyName, object value)
         {
-            if (additionalProperties.ContainsKey(propertyName))
-                additionalProperties[propertyName] = value;
-            else
-                additionalProperties.Add(propertyName, value);
-
             OnPropertyChanged(propertyName);
         }
-
-        public object GetProperty(string propertyName)
-        {
-            if(additionalProperties.TryGetValue(propertyName, out object value))
-                return value;
-
-            return null;
-        }
-
 
         public Element() { Name = string.Empty; }
         public Element(string name) { Name = name; }
